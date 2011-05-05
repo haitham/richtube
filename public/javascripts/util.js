@@ -15,10 +15,10 @@ var Util = function(){
 	public.getYoutubeEmbedFromId = function(videoId){
 		return "<div id=\"video_container\">" +
   				 "<object id=\"ytplayer\" style=\"height:390px; width:640px\" width=\"425\" height=\"344\">" +
-  				 "<param name=\"movie\" value=\"http://www.youtube.com/v/" + videoId + "?version=3&amp;feature=player_embedded\">" +
+  				 "<param name=\"movie\" value=\"http://www.youtube.com/e/" + videoId + "?enablejsapi=1&version=3\">" +
   				 "<param name=\"allowFullScreen\" value=\"true\">" +
   				 "<param name=\"allowScriptAccess\" value=\"always\">" +
-  				 "<embed src=\"http://www.youtube.com/v/" + videoId + "?version=3&amp;feature=player_embedded\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" allowscriptaccess=\"always\" width=\"425\" height=\"344\"></object>" +
+  				 "<embed src=\"http://www.youtube.com/e/" + videoId + "?enablejsapi=1&version=3\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" allowscriptaccess=\"always\" width=\"425\" height=\"344\"></object>" +
 					 "</div>"
 	};
 	
