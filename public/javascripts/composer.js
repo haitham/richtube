@@ -1,31 +1,74 @@
 var ytplayer = null;
+var tracks = null
 
 function onYouTubePlayerReady(playerId) {
  ytplayer = document.getElementById("ytplayer");
 }
 
 $(function(){
+  
+  //var tracks = null
+  var lastLine = null;
+  var numTracks = 1;
+  
+
   $("#add_widget").hide()
-  var insertAction = function(action,timeLine){
-  }
 
 	$("#youtube_fetch").click(function(){
-		var videoEmbed = Util.getYoutubeEmbedFromUrl($("#youtube_url").val());
-		$("#video_container").html(videoEmbed);
+	  Util.embedVideoFromUrl($("#youtube_url").val(), "video_container");
 		$("#add_widget").show()
+		tracks = {
+		  subtitles : [{
+		    label: "",
+		    lines: [],
+		  }]
+		};
 	});
 	
-	$("#start_subtitle").live( "click" , function(){
-	  ytplayer.playVideo()
+	$("#start_subtitle").live("click" , function(){
+	  ytplayer.pauseVideo();
+	  if($("#subtitles").val().length == 0){
+	    alert("Enter text");
+	    return ;
+	  }
+    //create element
+    var line = {
+      text : $("#subtitles").val(),
+      start : ytplayer.getCurrentTime()
+    };
+    //insert it to the right place
+    tracks.subtitles[0].lines.push(line);
+    //update indeces
+    lastLine = line;
+    $('#message').html("subtitle added at" + line.start + "seconds").fadeIn().delay(3000).fadeOut();
   });
   
   $("#end_subtitle").live( "click" , function(){
-    ytplayer.pauseVideo()
-    alert(ytplayer.getCurrentTime())
+    ytplayer.pauseVideo();
+    if(!lastLine){
+      alert("No subtitle was entered");
+      return ;
+    }
+    lastLine.end = ytplayer.getCurrentTime();
+    lastLine = null;
+    $("#subtitles").val("");
   });
   
-  $("#save").live( "click" , function(){
-    alert("save_button")
+  $("#save_button").live( "click" , function(){
+    if($('#track_label').val().length == 0){
+      alert("Track labels must be supplied");
+      return;
+    }
+    tracks.subtitles[0].label = $('#track_label').val()
+    var encoded = $.JSON.encode(tracks);
+    $.ajax({
+    url  : "/videos",
+    type : "POST",
+    data : {"video[youtube_id]": Util.getYoutubeIdFromUrl(ytplayer.getVideoUrl()), "video[title]":$("#video_title").val(), "video[timeline]": encoded },
+    success: function(response){
+      $('#message').html("Saved successfully").fadeIn();
+      location = "/videos/" + response;
+    }
+    });
   });
-	
 });

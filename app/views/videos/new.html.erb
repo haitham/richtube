@@ -1,4 +1,6 @@
 <script type="text/javascript" src="/javascripts/composer.js"></script>
+<script type="text/javascript" src="/javascripts/json.js"></script>
+
 
 <div>
   <label>Youtube link:</label>
@@ -6,15 +8,18 @@
   <input type="button" value="fetch" id="youtube_fetch">
 </div>
 
+<label>*Title:</label> <input id="video_title" type="text" /><br />
+
 <div id="video_container">
 </div>
 
 <hr />
 
 <div id="add_widget">
-<textarea cols="77" rows="10" id="subtitles"></textarea><br />
+<div id="message">&nbsp;</div>
+<label>*Subtitle name:</label> <input id="track_label" type="text" /><br />
+<textarea cols="77" rows="1" id="subtitles"></textarea><br />
 <input type="button" value="start" id="start_subtitle" />
 <input type="button" value="end" id="end_subtitle">
-</div>
-
 <input type="button" value="save" id="save_button">
+</div>

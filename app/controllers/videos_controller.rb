@@ -9,7 +9,8 @@ class VideosController < ApplicationController
   end
   
   def create
-    
+    v = Video.create params[:video]
+    render :text => v.id, :status => :ok
   end
   
   def show
