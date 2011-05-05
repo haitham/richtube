@@ -6,7 +6,7 @@ function onYouTubePlayerReady(playerId) {
 
 $(function(){
 	
-	var video = {
+	video = {
 		youtubeId: videoYoutubeId,
 		title: videoYoutubeId,
 		timeline: {
@@ -24,9 +24,11 @@ $(function(){
 		});
 	});
 	
-	video.timeline.comments = videoTimeline.comments.sort(function(a,b){
-		return (a.start > b.start);
-	});
+	if (typeof videoTimeline.comments !== "undefined"){
+	  video.timeline.comments = videoTimeline.comments.sort(function(a,b){
+		  return (a.start > b.start);
+	  });
+	}
 	
 	var subtitleHolders = "";
 	var subtitleControls = "";
