@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <title>RichTube</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/javascripts/util.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!--Header-->
+      <div class="header">
+        <div class="logo">
+          <h1 class="hidetext">
+            <a href="/">RichTube</a>
+          </h1>
+        </div>
+        <div class="navigation">
+          <ul class="nav">
+            <li><a href="/">All videos</a></li>
+            <li><a href="/videos/new">Create Video</a></li>
+        </ul>
+        </div>
+      </div>
+      <!--Content-->
+      <%= yield %>
+    </div>
+  </body>
+</html>
