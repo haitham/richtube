@@ -1,12 +1,11 @@
 var ytplayer = null;
-var tracks = null
 function onYouTubePlayerReady(playerId) {
  ytplayer = document.getElementById("ytplayer");
 }
 
 $(function(){
   
-//  var tracks = null
+  var tracks = null
   var lastLines = []
   var lastComment = null;
   var numTracks = -1;
