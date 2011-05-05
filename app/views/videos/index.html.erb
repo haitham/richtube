@@ -1,4 +1,6 @@
 <h3>All Videos</h3>
 <ul>
-  <li><a></a></li>
+  <%Video.all.each do |video|%>
+  <li><a href="<%=video_path(video.id)%>"><%=video.title%></a></li>
+  <%end%>
 </ul>
