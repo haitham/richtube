@@ -6,3 +6,12 @@ development:
   pool: 5
   username: root
   password: 
+
+yaser:
+  adapter: mysql
+  encoding: utf8
+  reconnect: true
+  database: richtube
+  pool: 5
+  username: root
+  password: 1234
