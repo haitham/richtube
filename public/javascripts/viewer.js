@@ -76,11 +76,24 @@ $(function(){
 			commentIndex = commentIndex - 1;
 			if ( commentIndex < 0 || (typeof comments[commentIndex].end !== "undefined" && comments[commentIndex].end !== null && ytplayer.getCurrentTime() >= comments[commentIndex].end) ){
 				$("#comments_container").html("&nbsp;");
+				$("#comments_resume").css("visibility", "hidden");
 			} else {
 				$("#comments_container").html(comments[commentIndex].html);
+				if (comments[commentIndex].pause){
+					ytplayer.pauseVideo();
+					$("#comments_resume").css("visibility", "visible");
+					comments[commentIndex].pause = false;
+				}
 			}
 		}
 	};
+	
+	$("#comments_container a").live("click", function(event){
+		event.preventDefault();
+		ytplayer.pauseVideo();
+		$("#comments_resume").css("visibility", "visible");
+		window.open($(this).attr("href"));
+	});
 	
 	Util.embedVideo(videoYoutubeId, "video");
 	
