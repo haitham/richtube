@@ -20,7 +20,7 @@ var Util = function(){
 	};
 	
 	public.embedVideoFromUrl = function(url, elementId){
-		embedVideo(Util.getYoutubeIdFromUrl(url), elementId);
+		Util.embedVideo(Util.getYoutubeIdFromUrl(url), elementId);
 	};
 	
 	return public;
