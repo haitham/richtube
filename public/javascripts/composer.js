@@ -1,14 +1,14 @@
 var ytplayer = null;
 var tracks = null
-
 function onYouTubePlayerReady(playerId) {
  ytplayer = document.getElementById("ytplayer");
 }
 
 $(function(){
   
-  //var tracks = null
+//  var tracks = null
   var lastLine = null;
+  var lastComment = null;
   var numTracks = 1;
   
 
@@ -21,7 +21,8 @@ $(function(){
 		  subtitles : [{
 		    label: "",
 		    lines: [],
-		  }]
+		  }],
+		  comments : [],
 		};
 	});
 	
@@ -40,7 +41,27 @@ $(function(){
     tracks.subtitles[0].lines.push(line);
     //update indeces
     lastLine = line;
-    $('#message').html("subtitle added at" + line.start + "seconds").fadeIn().delay(3000).fadeOut();
+    $('#message').html("subtitle added at" + line.start + " seconds").fadeIn().delay(3000).fadeOut();
+  });
+  
+  $("#start_comment").live("click" , function(){
+    ytplayer.pauseVideo();
+    if($("#comment_text").val().length == 0){
+      alert("Enter text");
+      return ;
+    }
+    //create element
+    var line = {
+      html : $("#comment_text").val(),
+      start : ytplayer.getCurrentTime(),
+      pause : $("#pause_check").attr("checked"),
+    };
+    //insert it to the right place
+    tracks.comments.push(line);
+    //update indeces
+    lastComment = line;
+    $('#message').html("Comment added at" + line.start + " seconds").fadeIn().delay(3000).fadeOut();
+    $("#pause_check").attr("checked",false)
   });
   
   $("#end_subtitle").live( "click" , function(){
@@ -52,6 +73,17 @@ $(function(){
     lastLine.end = ytplayer.getCurrentTime();
     lastLine = null;
     $("#subtitles").val("");
+  });
+  
+  $("#end_comment").live( "click" , function(){
+    ytplayer.pauseVideo();
+    if(!lastComment){
+      alert("No subtitle was entered");
+      return ;
+    }
+    lastComment.end = ytplayer.getCurrentTime();
+    lastComment = null;
+    $("#comment_text").val("");
   });
   
   $("#save_button").live( "click" , function(){
