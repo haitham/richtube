@@ -12,18 +12,15 @@ var Util = function(){
 		return videoId;
 	};
 	
-	public.getYoutubeEmbedFromId = function(videoId){
-		return "<div id=\"video_container\">" +
-  				 "<object id=\"ytplayer\" style=\"height:390px; width:640px\" width=\"425\" height=\"344\">" +
-  				 "<param name=\"movie\" value=\"http://www.youtube.com/e/" + videoId + "?enablejsapi=1&version=3\">" +
-  				 "<param name=\"allowFullScreen\" value=\"true\">" +
-  				 "<param name=\"allowScriptAccess\" value=\"always\">" +
-  				 "<embed src=\"http://www.youtube.com/e/" + videoId + "?enablejsapi=1&version=3\" type=\"application/x-shockwave-flash\" allowfullscreen=\"true\" allowscriptaccess=\"always\" width=\"425\" height=\"344\"></object>" +
-					 "</div>"
+	public.embedVideo = function(videoId, elementId){
+		var params = { allowScriptAccess: "always" };
+	  var atts = { id: "ytplayer" };
+	  swfobject.embedSWF("http://www.youtube.com/e/" + videoId + "?enablejsapi=1&playerapiid=ytplayer",
+	                     elementId, "425", "356", "8", null, null, params, atts);
 	};
 	
-	public.getYoutubeEmbedFromUrl = function(url){
-		return Util.getYoutubeEmbedFromId(Util.getYoutubeIdFromUrl(url));
+	public.embedVideoFromUrl = function(url, elementId){
+		embedVideo(Util.getYoutubeIdFromUrl(url), elementId);
 	};
 	
 	return public;
