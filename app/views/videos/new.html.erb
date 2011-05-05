@@ -18,18 +18,25 @@
     <textarea cols="34" rows="20" id="comment_text"></textarea><br />
     <input type="button" value="start" id="start_comment" />
     <input type="button" value="end" id="end_comment">
-    <input type="checkbox" id="pause_check" name="pause" value="true"> Pause<br>
+    <input type="checkbox" id="pause_check" name="pause" value="true"> Pause<br />
   </div>
   <div style="clear:both;"></div>
 </div>
 
 <hr />
 
-<div id="add_widget">
 <div id="message">&nbsp;</div>
-<label>*Subtitle name:</label> <input id="track_label" type="text" /><br />
-<textarea cols="77" rows="1" id="subtitles"></textarea><br />
-<input type="button" value="start" id="start_subtitle" />
-<input type="button" value="end" id="end_subtitle">
-<input type="button" value="save" id="save_button">
+
+<input type="button" value="Add a new subtitle" id="new_subtitles">
+<input type="button" value="Finish" id="save_button">
+<div id="widgets"></div>
+
+
+<div id="template" style="display:none">
+  <div id="add_widget_ID">
+    <label>*Subtitle name:</label> <input class="track_label" id="ID" type="text" /><br />
+    <textarea cols="77" rows="1" id="subtitles_ID"></textarea><br />
+    <input type="button" value="start" class="start_subtitle" id="ID" />
+    <input type="button" value="end" class="end_subtitle" id="ID">
+  </div>
 </div>

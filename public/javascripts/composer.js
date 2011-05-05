@@ -7,40 +7,54 @@ function onYouTubePlayerReady(playerId) {
 $(function(){
   
 //  var tracks = null
-  var lastLine = null;
+  var lastLines = []
   var lastComment = null;
-  var numTracks = 1;
+  var numTracks = -1;
   
 
-  $("#add_widget").hide()
+  $("#add_widget").hide() // will be removed
+  
+  var create_add_widget = function(){
+    widget = $('#template').html();
+    numTracks = numTracks  + 1 ;
+    widget = widget.replace(/ID/g,("" + numTracks));
+    tracks.subtitles.push({
+        label: "",
+        lines: []
+    });
+    $('#widgets').append(widget);
+  };
 
 	$("#youtube_fetch").click(function(){
 	  Util.embedVideoFromUrl($("#youtube_url").val(), "video_container");
-		$("#add_widget").show()
+		$("#add_widget").show();
 		tracks = {
-		  subtitles : [{
-		    label: "",
-		    lines: [],
-		  }],
-		  comments : [],
+		  subtitles : [],
+		  comments : []
 		};
 	});
 	
-	$("#start_subtitle").live("click" , function(){
+	$('#new_subtitles').live("click" , function(){
+    ytplayer.pauseVideo();
+    create_add_widget();
+  });
+	
+	$(".start_subtitle").live("click" , function(){
+	  var id = $(this).attr("id");
 	  ytplayer.pauseVideo();
-	  if($("#subtitles").val().length == 0){
+	  if($("#subtitles_" + id).val().length == 0){
 	    alert("Enter text");
 	    return ;
 	  }
     //create element
     var line = {
-      text : $("#subtitles").val(),
+      text : $("#subtitles_" + id).val(),
       start : ytplayer.getCurrentTime()
     };
     //insert it to the right place
-    tracks.subtitles[0].lines.push(line);
+    tracks.subtitles[id].lines.push(line);
     //update indeces
-    lastLine = line;
+    lastLines[id] = line;
     $('#message').html("subtitle added at" + line.start + " seconds").fadeIn().delay(3000).fadeOut();
   });
   
@@ -64,15 +78,16 @@ $(function(){
     $("#pause_check").attr("checked",false)
   });
   
-  $("#end_subtitle").live( "click" , function(){
+  $(".end_subtitle").live( "click" , function(){
+    var id = $(this).attr("id");
     ytplayer.pauseVideo();
-    if(!lastLine){
+    if(!lastLines[id]){
       alert("No subtitle was entered");
       return ;
     }
-    lastLine.end = ytplayer.getCurrentTime();
-    lastLine = null;
-    $("#subtitles").val("");
+    lastLines[id].end = ytplayer.getCurrentTime();
+    lastLines[id] = null;
+    $("#subtitles_" + id).val("");
   });
   
   $("#end_comment").live( "click" , function(){
@@ -87,11 +102,20 @@ $(function(){
   });
   
   $("#save_button").live( "click" , function(){
-    if($('#track_label').val().length == 0){
-      alert("Track labels must be supplied");
+    var failure = false;
+    $('.track_label:visible').each(function(){
+      var label = $(this);
+      if(label.val().length == 0){
+        alert("Track labels must be supplied");
+        failure = true;
+        return;
+      }
+      tracks.subtitles[label.attr("id")].label = label.val();
+    });
+    if (failure){
       return;
     }
-    tracks.subtitles[0].label = $('#track_label').val()
+    
     var encoded = $.JSON.encode(tracks);
     $.ajax({
     url  : "/videos",
