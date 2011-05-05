@@ -1,10 +1,13 @@
+var ytplayer = null;
+
+function onYouTubePlayerReady(playerId) {
+ alert("3aaaaaaaa")
+ ytplayer = document.getElementById("ytPlayer");
+}
+
 $(function(){
   $("#add_widget").hide()
   var insertAction = function(action,timeLine){
-  }
-  
-  var getPlayerObject = function(){
-    return document.getElementById('video_container object');
   }
 
 	$("#youtube_fetch").click(function(){
@@ -14,11 +17,11 @@ $(function(){
 	});
 	
 	$("#start_subtitle").live( "click" , function(){
-	  getPlayerObject().playVideo()
+	  ytplayer.playVideo()
   });
   
   $("#end_subtitle").live( "click" , function(){
-    getPlayerObject().pauseVideo()
+    ytplayer.pauseVideo()
   });
   
   $("#save").live( "click" , function(){
