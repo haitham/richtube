@@ -1,8 +1,7 @@
 var ytplayer = null;
 
 function onYouTubePlayerReady(playerId) {
- alert("3aaaaaaaa")
- ytplayer = document.getElementById("ytPlayer");
+ ytplayer = document.getElementById("ytplayer");
 }
 
 $(function(){
@@ -22,6 +21,7 @@ $(function(){
   
   $("#end_subtitle").live( "click" , function(){
     ytplayer.pauseVideo()
+    alert(ytplayer.getCurrentTime())
   });
   
   $("#save").live( "click" , function(){
