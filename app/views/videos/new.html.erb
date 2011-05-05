@@ -10,7 +10,16 @@
 
 <label>*Title:</label> <input id="video_title" type="text" /><br />
 
-<div id="video_container">
+<div style="width:800px">
+  <div style="float:left;width:450px;">
+    <div id="video_container"></div>
+  </div>
+  <div id="comments_container" style="float:left;width:300px;border:1px solid #000">
+    <textarea cols="34" rows="20" id="comment_text"></textarea><br />
+    <input type="button" value="start" id="start_comment" />
+    <input type="button" value="end" id="end_comment">
+  </div>
+  <div style="clear:both;"></div>
 </div>
 
 <hr />
