@@ -9,13 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110505115850) do
+ActiveRecord::Schema.define(:version => 20110505134040) do
 
   create_table "videos", :force => true do |t|
     t.string   "youtube_id", :null => false
     t.text     "timeline"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title",      :null => false
   end
 
 end
