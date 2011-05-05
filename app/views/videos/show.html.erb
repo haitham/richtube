@@ -1,0 +1,20 @@
+<script type="text/javascript" src="/javascripts/viewer.js"></script>
+
+<script>
+  var videoYoutubeId = "<%=@video.youtube_id%>";
+  var videoTitle = "<%=@video.title%>";
+  var videoTimeline = <%=@video.timeline%>;
+</script>
+
+<div id="video_container" style="width:440px;float:left;">
+  <div id="video"></div>
+  <div id="subtitles_container"></div>
+</div>
+<div style="float:left;">
+  <div id="comments_container" style="height:357px;width:300px;">&nbsp;</div>
+  <div style="clear:both;"></div>
+  <div>
+    <h4>Enable subtitle:</h4><br/>
+    <div id="subtitle_controls"></div>
+  </div>
+</div>
