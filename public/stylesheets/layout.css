@@ -64,16 +64,9 @@ p{padding:5px 0;}
 .input_field{font-size:1em;width:315px;padding:0 7px;height:40px;margin:0px;color:#848484;margin-bottom: 5px; font-size:2em; color:#999999; margin-right:10px; background: transparent url(../images/input-field.png) no-repeat center left;}
 .labelbox,.inputbox,.buttoncontainer{float:left; }
 	.labelbox{margin:0 15px;}
-.buttontrack{background:url(../images/trackbutton.png) no-repeat center center; width:100px; height:45px;}
-.container.results{margin:0 auto; padding:20px 0; position:relative; min-height:400px;}
-	.container.results h3{font-size:1.6em; color:#333;}
-		.container.results h3 span{font-size:1.2em; margin:0 5px 0 0;}
-.sr-tweets{float:left; width:700px;}
-.tweet-content { margin-left: 58px; min-height: 48px;}
-.sr-money{float: right; width:200px;}
-	.sr-money img{margin:0 20px; border:3px solid transparent;}
-		.sr-money img:hover{margin:0 20px; border:3px solid #6fadda;}
 
+#subtitles_container{text-align:center; font-size:1.6em; padding:20px; font-weight:bold;}
+#comments_container{font-size:1.4em; padding:20px;}
 
 /*--- Footer Elements ---*/
 .footer .copyright{float:left;}
