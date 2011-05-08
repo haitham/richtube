@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>RichTube</title>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+  <script src="http://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="/javascripts/util.js"></script>
+  <script type="text/javascript">
+    google.load("swfobject", "2.1");
+  </script>
+  <script type="text/javascript" src="/javascripts/composer.js"></script>
+  <script type="text/javascript" src="/javascripts/json.js"></script>
+	<link href="../stylesheets/layout.css" type="text/css" media="all" rel="stylesheet" />
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <!--Header-->
+    <div class="header">
+      <div class="logo">
+        <h1 class="hidetext">
+          <a href="/">RichTube</a>
+        </h1>
+      </div>
+      <div class="navigation">
+        <ul class="nav">
+          <li><a href="/">All videos</a></li>
+          <li><a href="/videos/new">Create Video</a></li>
+      </ul>
+      </div>
+    </div>
+    <!--Content-->
+    <div class="container">
+      <div>
+        <label>Youtube link:</label>
+        <input type="text" id="youtube_url" />
+        <input type="button" value="fetch" id="youtube_fetch">
+      </div>      
+      <label>*Title:</label> <input id="video_title" type="text" /><br />     
+      <div style="width:800px">
+        <div style="float:left;width:450px;">
+          <div id="video_container"></div>
+        </div>
+        <div id="comments_container" style="float:left;width:300px;border:1px solid #000">
+          <textarea cols="34" rows="20" id="comment_text"></textarea><br />
+          <input type="button" value="start" id="start_comment" />
+          <input type="button" value="end" id="end_comment">
+          <input type="checkbox" id="pause_check" name="pause" value="true"> Pause<br />
+        </div>
+        <div style="clear:both;"></div>
+      </div>      
+      <hr />      
+      <div id="message">&nbsp;</div>      
+      <input type="button" value="Add a new subtitle" id="new_subtitles">
+      <input type="button" value="Finish" id="save_button">
+      <div id="widgets"></div>
+      <div id="template" style="display:none">
+        <div id="add_widget_ID">
+          <label>*Subtitle name:</label> <input class="track_label" id="ID" type="text" /><br />
+          <textarea cols="77" rows="1" id="subtitles_ID"></textarea><br />
+          <input type="button" value="start" class="start_subtitle" id="ID" />
+          <input type="button" value="end" class="end_subtitle" id="ID">
+        </div>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <!-- Footer -->
+    <div class="footer">
+    	<div class="copyright">Copyright &copy; 2011 asTweeted Ltd. All Rights Reserved.</div>
+      <div class="footlinks"><a href="javascript:void(0);">About Us</a> . <a href="javascript:void(0);">Contact</a> . <a href="javascript:void(0);">Blog</a> . <a href="javascript:void(0);">Help</a> . <a href="javascript:void(0);">Terms of Service</a> . <a href="javascript:void(0);">Privacy Policy</a></div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</body>
+</html>

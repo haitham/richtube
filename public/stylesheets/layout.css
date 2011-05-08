@@ -1,0 +1,80 @@
+@charset "utf-8";
+/*
+  Copyright (c) 2011, RichTube All rights reserved.
+ 	RichTube Master StyleSheet.
+	Author: Hashem E.Zahran.
+	Author E-Mail: hashem.zahran@espace.com.eg
+*/
+
+/*--- Reset Styles ---*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td{margin:0; padding:0; border:0; outline:0; font-size:100%; vertical-align:baseline; background:transparent;}
+body{line-height:1;}
+ol, ul{list-style:none;}
+blockquote, q{quotes:none;}
+blockquote:before, blockquote:after, q:before, q:after{content:''; content:none;}
+/* remember to define focus styles! */
+:focus{outline:0;}
+/* tables still need 'cellspacing="0"' in the markup */
+table{border-collapse:collapse; border-spacing:0;}
+
+/*--- Base Styles ---*/
+body,td,th{font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#333333; line-height:150%;}
+body{background:#ffffff;}
+*{outline:none; border:none;}
+a{font-family:Arial, Helvetica, sans-serif; font-size:1em; color:#efefef;}
+a:link, a:visited, a:active, a:hover{text-decoration:none; color:#444444;}
+a:hover{text-decoration:underline; color:#444444;}
+h1,h2,h3,h4,h5,h6{font-family:Arial, Helvetica, sans-serif;margin:0 0 10px;}
+h1{font-size:2.2em; color:#9B9C9E;}
+h2{font-size:1.8em; color:#BC3226;}
+h3{font-size:1.4em; color:#333;}
+h4{font-size:1.2em; color:#333333;}
+img{border:none;}
+ul{list-style:none; margin:0px; padding:0px;}
+p{padding:5px 0;}
+/*--- Generic Elements ---*/
+.hidetext{line-height:0px; font-size:0px; text-indent:-1000px; text-decoration:none; overflow:hidden; color:#d9cf9a;}
+.clear{clear:both;}
+/*--- General Elements ---*/
+.wrapper{width:960px; margin:0 auto;}
+.header{margin:10px auto 0; width:100%; height:70px; position:relative; border-bottom: 1px solid #dddddd;}
+.container{margin:0 auto; padding:20px 10px; position:relative; min-height:250px;}
+.footer{color:#333; width:960px;  border-top: 1px solid #dddddd; padding:20px 0}
+
+/*--- Header Elements ---*/
+/*- Logo -*/
+.header .logo{background: url(../images/richtube-logo.jpg) no-repeat 0 0; width:149px; height:60px; float:left;}
+  .header .logo a{display:block; width:149px; height:60px;}
+	.header .logo h1{margin:0;}
+
+/*- Navigation -*/
+.header .navigation{float:right;margin-top: 20px;}
+  .header .navigation ul.nav{margin:0; padding:7px 6px 0; line-height:100%; float:right;}
+    .header .navigation ul.nav li{margin:0 10px; padding:0 0 8px; float:left; position:relative; list-style:none; background:none;}
+	  .header .navigation ul.nav li:hover > a{color:#4e90c0;}
+	.header .navigation ul.nav a{font-weight:bold; color:#65a9da; text-decoration:none; display:block; padding:7px 15px; margin:0;}
+  .header .navigation ul.nav .current{background:url(../images/master-assets/tip_arrow.png) no-repeat 50% 90%;}
+    .header .navigation ul.nav .current a{background:#BC3226; color:#333; -webkit-box-shadow:0 1px 1px rgba(0, 0, 0, .2); -moz-box-shadow:0 1px 1px rgba(0, 0, 0, .2); box-shadow:0 1px 1px rgba(0, 0, 0, .2);}
+    .header .navigation ul.nav li .menu-separator{background:none repeat scroll 0 0 #4D4D4D; width:1px; height:30px; margin-top:-3px;}
+    .header .navigation ul.nav li span.ar_dwn{float:right;width:7px;height:5px;background:url(../images/profile-assets/login-arrow_down.png) no-repeat 0 0;margin:5px 0 0 5px;}
+		
+/*--- Container Elements ---*/
+.container h2{background: url(../images/track-header.png) no-repeat 0 0;text-align:center; color:#333; margin:0 auto; padding:0; width:815px; height:66px;}
+	form{margin-top:100px;}
+.input_field{font-size:1em;width:315px;padding:0 7px;height:40px;margin:0px;color:#848484;margin-bottom: 5px; font-size:2em; color:#999999; margin-right:10px; background: transparent url(../images/input-field.png) no-repeat center left;}
+.labelbox,.inputbox,.buttoncontainer{float:left; }
+	.labelbox{margin:0 15px;}
+.buttontrack{background:url(../images/trackbutton.png) no-repeat center center; width:100px; height:45px;}
+.container.results{margin:0 auto; padding:20px 0; position:relative; min-height:400px;}
+	.container.results h3{font-size:1.6em; color:#333;}
+		.container.results h3 span{font-size:1.2em; margin:0 5px 0 0;}
+.sr-tweets{float:left; width:700px;}
+.tweet-content { margin-left: 58px; min-height: 48px;}
+.sr-money{float: right; width:200px;}
+	.sr-money img{margin:0 20px; border:3px solid transparent;}
+		.sr-money img:hover{margin:0 20px; border:3px solid #6fadda;}
+
+
+/*--- Footer Elements ---*/
+.footer .copyright{float:left;}
+.footer .footlinks{float:right;}
